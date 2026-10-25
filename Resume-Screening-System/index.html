@@ -76,33 +76,67 @@
             formData.append('job_description', document.getElementById('jobDescription').value);
             formData.append('file', document.getElementById('resumeFile').files[0]);
 
+            if (window.location.protocol === 'file:') {
+                alert('The page was opened directly from a file. Start the server from the project root with: fastapi dev .\\Resume-Screening-System\\main.py, then open http://127.0.0.1:8000/.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Analyze Resume";
+                return;
+            }
+
             try {
-                const response = await fetch('/api/v1/screen', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-                
-                if (response.ok) {
-                    document.getElementById('results').classList.remove('hidden');
-                    document.getElementById('scoreDisplay').innerText = `${data.match_score}%`;
-                    document.getElementById('emailDisplay').innerText = data.candidate_info.email;
-                    document.getElementById('phoneDisplay').innerText = data.candidate_info.phone;
-
-                    // Render Skills Badges
-                    document.getElementById('matchedSkills').innerHTML = data.matched_skills.map(s => 
-                        `<span class="bg-emerald-900/60 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-700">${s}</span>`
-                    ).join('') || '<span class="text-xs text-slate-500">None detected</span>';
-
-                    document.getElementById('missingSkills').innerHTML = data.missing_skills.map(s => 
-                        `<span class="bg-rose-900/60 text-rose-300 text-xs px-3 py-1 rounded-full border border-rose-700">${s}</span>`
-                    ).join('') || '<span class="text-xs text-slate-500">None</span>';
-                } else {
-                    alert('Error processing document: ' + data.detail);
+                let response;
+                try {
+                    response = await fetch('/api/v1/screen', {
+                        method: 'POST',
+                        body: formData
+                    });
+                } catch {
+                    alert(`Cannot connect to the screening server at ${window.location.origin}. Start it from the project root with: fastapi dev .\\Resume-Screening-System\\main.py, then open http://127.0.0.1:8000/.`);
+                    return;
                 }
-            } catch (err) {
-                alert('Server Connection Error');
+
+                const contentType = response.headers.get('content-type') || '';
+                let data = {};
+                if (contentType.includes('application/json')) {
+                    try {
+                        data = await response.json();
+                    } catch {
+                        alert('The screening server returned invalid JSON.');
+                        return;
+                    }
+                }
+
+                if (!response.ok) {
+                    if (response.status === 404 || response.status === 405) {
+                        alert('The screening API is not available at this address. Start FastAPI from the project root with: fastapi dev .\\Resume-Screening-System\\main.py, then open http://127.0.0.1:8000/.');
+                        return;
+                    }
+                    alert('Error processing document: ' + (data.detail || `The server returned HTTP ${response.status}.`));
+                    return;
+                }
+
+                if (!contentType.includes('application/json') ||
+                    typeof data.match_score !== 'number' ||
+                    !data.candidate_info ||
+                    !Array.isArray(data.matched_skills) ||
+                    !Array.isArray(data.missing_skills)) {
+                    alert('The screening server returned an invalid response. Check that the FastAPI backend is running.');
+                    return;
+                }
+
+                document.getElementById('results').classList.remove('hidden');
+                document.getElementById('scoreDisplay').innerText = `${data.match_score}%`;
+                document.getElementById('emailDisplay').innerText = data.candidate_info.email;
+                document.getElementById('phoneDisplay').innerText = data.candidate_info.phone;
+
+                // Render Skills Badges
+                document.getElementById('matchedSkills').innerHTML = data.matched_skills.map(s =>
+                    `<span class="bg-emerald-900/60 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-700">${s}</span>`
+                ).join('') || '<span class="text-xs text-slate-500">None detected</span>';
+
+                document.getElementById('missingSkills').innerHTML = data.missing_skills.map(s =>
+                    `<span class="bg-rose-900/60 text-rose-300 text-xs px-3 py-1 rounded-full border border-rose-700">${s}</span>`
+                ).join('') || '<span class="text-xs text-slate-500">None</span>';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Analyze Resume";

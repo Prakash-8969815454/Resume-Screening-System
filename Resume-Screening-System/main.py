@@ -27,7 +27,7 @@ async def screen_resume(
 ):
     # Validate File Extension
     file_ext = os.path.splitext(file.filename)[1].lower()
-    if file_ext not in [".pdf", ".docx", ".doc"]:
+    if file_ext not in [".pdf", ".docx"]:
         raise HTTPException(status_code=400, detail="Invalid file format. Upload PDF or DOCX.")
 
     # Save uploaded file locally
