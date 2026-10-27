@@ -11,14 +11,18 @@ COMMON_SKILLS = {
     "angular", "vue", "node.js", "fastapi", "django", "flask", "sql", "postgresql", 
     "mysql", "mongodb", "docker", "kubernetes", "aws", "azure", "git", "github", 
     "machine learning", "deep learning", "nlp", "tensorflow", "pytorch", "pandas", 
-    "numpy", "scikit-learn", "rest api", "graphql", "agile", "devops", "ci/cd","confidence",
+    "numpy", "scikit-learn", "rest api", "graphql", "agile", "devops", "ci/cd","aiml",
+    "statistics", "probability","matplotlib", "kafka", "pyspark", "hadoop", "spark",
+    "etl","elt","pipelne","cloud", "vscode", "jupiternotebook", "databricks", "logical reasoning",
+    "php","c", "ruby", "swift", "objective-c", "r", "sas", "stata", "matlab", "excel",
+    "oops","opearting system","computer fundamentals",
     
     # 1. Foundational & Basic Literacy Skills (Universal)
     "Reading Comprehension",
-    "Writing and Documentation",
-    "Basic and Applied Mathematics",
+    "Writing","Documentation",
+    "Basic","Applied Mathematics",
     "Active Listening",
-    "Verbal Communication and Speaking",
+    "Verbal Communication","Speaking",
     
     # 2. Cognitive & Thinking Skills (Knowledge Work & Analytical Roles)
     "Critical Thinking",
@@ -30,45 +34,45 @@ COMMON_SKILLS = {
     "Systems Analysis and Evaluation",
 
     # 3. Interpersonal, Social & Customer Service Skills (Universal)
-    "Team Coordination and Collaboration",
-    "Customer Service and Client Relations",
-    "Negotiation and Conflict Resolution",
-    "Persuasion and Influencing",
-    "Social Perceptiveness and Empathy",
-    "Instruction, Training, and Mentoring",
+    "Team Coordination", "Collaboration",
+    "Customer Service", "Client Relations",
+    "Negotiation", "Conflict Resolution",
+    "Persuasion", "Influencing",
+    "Social Perceptiveness", "Empathy",
+    "Instruction", "Training", "Mentoring",
 
     # 4. Self-Management & Work Ethic (All Sectors)
-    "Time Management and Punctuality",
-    "Adaptability and Workplace Agility",
-    "Stress Tolerance and Resilience",
-    "Reliability, Accountability, and Work Ethic",
-    "Attention to Detail and Quality Control",
+    "Time Management", "Punctuality",
+    "Adaptability", "Workplace Agility",
+    "Stress Tolerance", "Resilience",
+    "Reliability", "Accountability", "Work Ethic",
+    "Attention to Detail", "Quality Control",
 
     # 5. Digital & Technical Skills (Modern Offices & Tech Roles)
-    "Digital Literacy and Navigation",
-    "Data Literacy and Spreadsheet Proficiency (Excel/Google Sheets)",
-    "Collaboration Software Usage (Slack, Teams, Zoom)",
-    "Generative AI & Productivity Tool Utilization",
-    "Software Development and Programming (e.g., Python, JavaScript, SQL)",
-    "IT Support, Hardware Setup, and Network Troubleshooting",
-    "Cybersecurity Fundamentals",
+    "Digital Literacy","Navigation",
+    "Data Literacy","Spreadsheet Proficiency", "Excel","Google Sheets",
+    "Collaboration", "Software Usage Slack", "Teams", "Zoom",
+    "Generative AI", "Productivity", "Tool Utilization",
+    "Software Development","Programming" ,
+    "IT Support", "Hardware Setup", "Network" "Troubleshooting",
+    "Cybersecurity" ,"Fundamentals",
 
     # 6. Vocational, Manual & Physical Skills (Trades, Manufacturing, Construction, Agriculture)
-    "Manual Dexterity and Control Precision",
-    "Multilimb Coordination and Spatial Awareness",
-    "Mechanical Comprehension and Equipment Repair",
-    "Heavy Machinery and Vehicle Operation",
-    "Physical Stamina, Strength, and Endurance",
-    "Precision Tool Handling and Assembly",
-    "Construction Trades (Carpentry, Plumbing, Electrical, Welding)",
-    "Agricultural, Harvesting, and Fieldwork Techniques",
+    "Manual Dexterity"," Control Precision",
+    "Multilimb Coordination", "Spatial Awareness",
+    "Mechanical Comprehension","Equipment Repair",
+    "Heavy Machinery","Vehicle Operation",
+    "Physical Stamina", "Strength",  "Endurance",
+    "Precision Tool", "Handling","Assembly",
+    "Carpentry", "Plumbing", "Electrical", "Welding",
+    "Agricultural", "Harvesting",  "Fieldwork Techniques",
 
     # 7. Management & Resource Operations (Leadership & Logistics)
-    "Project Management and Workflow Planning",
-    "Personnel and Human Resource Management",
-    "Financial Literacy and Budgeting",
-    "Material, Stock, and Inventory Resource Management",
-    "Administrative and Office Organization"
+    "Project Management","Workflow Planning",
+    "Personnel","Human Resource Management",
+    "Financial Literacy","Budgeting",
+    "Material", "Stock",  "Inventory Resource Management",
+    "Administrative","Office Organization"
 }
 
 def extract_email(text: str) -> str:
