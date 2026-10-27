@@ -5,11 +5,70 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Standard skills taxonomy dictionary
 COMMON_SKILLS = {
+    # 0. Technical & Professional Skills (Industry-Specific)
+
     "python", "java", "c++", "javascript", "typescript", "html", "css", "react", 
     "angular", "vue", "node.js", "fastapi", "django", "flask", "sql", "postgresql", 
     "mysql", "mongodb", "docker", "kubernetes", "aws", "azure", "git", "github", 
     "machine learning", "deep learning", "nlp", "tensorflow", "pytorch", "pandas", 
-    "numpy", "scikit-learn", "rest api", "graphql", "agile", "devops", "ci/cd"
+    "numpy", "scikit-learn", "rest api", "graphql", "agile", "devops", "ci/cd","confidence",
+    
+    # 1. Foundational & Basic Literacy Skills (Universal)
+    "Reading Comprehension",
+    "Writing and Documentation",
+    "Basic and Applied Mathematics",
+    "Active Listening",
+    "Verbal Communication and Speaking",
+    
+    # 2. Cognitive & Thinking Skills (Knowledge Work & Analytical Roles)
+    "Critical Thinking",
+    "Complex Problem Solving",
+    "Deductive and Inductive Reasoning",
+    "Judgment and Decision Making",
+    "Active Learning and Continuous Adaptability",
+    "Information Ordering and Pattern Recognition",
+    "Systems Analysis and Evaluation",
+
+    # 3. Interpersonal, Social & Customer Service Skills (Universal)
+    "Team Coordination and Collaboration",
+    "Customer Service and Client Relations",
+    "Negotiation and Conflict Resolution",
+    "Persuasion and Influencing",
+    "Social Perceptiveness and Empathy",
+    "Instruction, Training, and Mentoring",
+
+    # 4. Self-Management & Work Ethic (All Sectors)
+    "Time Management and Punctuality",
+    "Adaptability and Workplace Agility",
+    "Stress Tolerance and Resilience",
+    "Reliability, Accountability, and Work Ethic",
+    "Attention to Detail and Quality Control",
+
+    # 5. Digital & Technical Skills (Modern Offices & Tech Roles)
+    "Digital Literacy and Navigation",
+    "Data Literacy and Spreadsheet Proficiency (Excel/Google Sheets)",
+    "Collaboration Software Usage (Slack, Teams, Zoom)",
+    "Generative AI & Productivity Tool Utilization",
+    "Software Development and Programming (e.g., Python, JavaScript, SQL)",
+    "IT Support, Hardware Setup, and Network Troubleshooting",
+    "Cybersecurity Fundamentals",
+
+    # 6. Vocational, Manual & Physical Skills (Trades, Manufacturing, Construction, Agriculture)
+    "Manual Dexterity and Control Precision",
+    "Multilimb Coordination and Spatial Awareness",
+    "Mechanical Comprehension and Equipment Repair",
+    "Heavy Machinery and Vehicle Operation",
+    "Physical Stamina, Strength, and Endurance",
+    "Precision Tool Handling and Assembly",
+    "Construction Trades (Carpentry, Plumbing, Electrical, Welding)",
+    "Agricultural, Harvesting, and Fieldwork Techniques",
+
+    # 7. Management & Resource Operations (Leadership & Logistics)
+    "Project Management and Workflow Planning",
+    "Personnel and Human Resource Management",
+    "Financial Literacy and Budgeting",
+    "Material, Stock, and Inventory Resource Management",
+    "Administrative and Office Organization"
 }
 
 def extract_email(text: str) -> str:
